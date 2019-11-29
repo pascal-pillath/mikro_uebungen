@@ -1,0 +1,91 @@
+---
+prev_page: '/tutorial/tutorial_interact.html'
+next_page: '/tutorial/tutorial_monty_hall.html'
+---
+
+{% raw %}
+
+<div id="ipython-notebook">
+    <div class="buttons">
+        <button class="interact-button js-nbinteract-widget">
+            Show Widgets
+        </button>
+    </div>
+    
+
+
+
+
+
+
+
+  
+
+  <div class="nbinteract-hide_in
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># HIDDEN</span>
+<span class="c1"># Clear previously defined variables</span>
+<span class="o">%</span><span class="k">reset</span> -f
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Publishing-A-Webpage">Publishing A Webpage<a class="anchor-link" href="#Publishing-A-Webpage">&#182;</a></h1><p>To convert a notebook into an HTML file, start a terminal and run the following command.</p>
+<div class="highlight"><pre><span></span>nbinteract tutorial.ipynb
+</pre></div>
+<p>This generates a <code>tutorial.html</code> file with the contents of the notebook created in the previous section. Now, push your files to GitHub by running:</p>
+<div class="highlight"><pre><span></span>git add -A
+git commit -m <span class="s2">&quot;Publish nb&quot;</span>
+git push origin master
+</pre></div>
+<p>After pushing, you now have a URL you can view and share:</p>
+
+<pre><code>{username}.github.io/nbinteract-tutorial/tutorial.html</code></pre>
+<p>Where <code>{username}</code> is replaced with your GitHub username. For example, if my
+username is <code>SamLau95</code>, my URL is:</p>
+
+<pre><code>SamLau95.github.io/nbinteract-tutorial/tutorial.html</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Publishing-to-a-different-URL">Publishing to a different URL<a class="anchor-link" href="#Publishing-to-a-different-URL">&#182;</a></h2><p>To change the URL of the page you publish, you can rename your notebook before you convert it. For example, if you rename <code>tutorial.ipynb</code> to <code>hello.ipynb</code> and convert the notebook, the resulting URL becomes:</p>
+
+<pre><code>{username}.github.io/nbinteract-tutorial/hello.html</code></pre>
+<p>To change the path segment before the filename (in this case, <code>nbinteract-tutorial</code>) you can create a new GitHub repo with the subpath name you want. Then, you may create and convert notebooks in this repo. For example, if you create a new repo called <code>blog-posts</code> and convert a notebook called <code>tutorial.ipynb</code>, the resulting URL becomes:</p>
+
+<pre><code>{username}.github.io/blog-posts/tutorial.html</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Workflow">Workflow<a class="anchor-link" href="#Workflow">&#182;</a></h2><p>You have learned a simple workflow to create interactive webpages:</p>
+<ol>
+<li>Write a Jupyter notebook containing Python functions</li>
+<li>Use <code>interact</code> to create UI elements to interact with the functions.</li>
+<li>Run <code>nbinteract {notebook}</code> in a terminal to generate an interactive webpage using your notebook code.</li>
+<li>Publish your webpage to GitHub pages to make it publicly accessible.</li>
+</ol>
+<p>In the next section, you will create an interactive simulation of the Monty Hall Problem. Onward!</p>
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+{% endraw %}

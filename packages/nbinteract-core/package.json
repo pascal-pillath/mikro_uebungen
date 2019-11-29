@@ -1,0 +1,50 @@
+{
+  "name": "nbinteract-core",
+  "version": "0.2.4",
+  "description": "Library to allow public interactive Jupyter notebooks",
+  "main": "lib/index.bundle.js",
+  "module": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no tests available\" && exit 1",
+    "build": "webpack --mode production --devtool source-map",
+    "watch": "webpack --watch",
+    "serve": "webpack-dev-server --open",
+    "stats": "webpack --profile --json > stats.json",
+    "stats-prod": "webpack --profile --json --mode production > stats-prod.json",
+    "analyze": "webpack-bundle-analyzer -p 9999 stats.json",
+    "analyze-prod": "webpack-bundle-analyzer -p 9999 stats-prod.json",
+    "clean": "rimraf lib/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamLau95/nbinteract.git"
+  },
+  "keywords": [
+    "jupyter",
+    "notebook",
+    "html",
+    "interactive",
+    "widgets"
+  ],
+  "author": "Sam Lau",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/SamLau95/nb-interact/issues"
+  },
+  "homepage": "https://github.com/SamLau95/nb-interact#readme",
+  "dependencies": {
+    "@jupyter-widgets/base": "^1.1.8",
+    "@jupyter-widgets/controls": "^1.1.5",
+    "@jupyter-widgets/html-manager": "^0.11.9",
+    "@jupyter-widgets/output": "^1.0.15",
+    "@jupyterlab/services": "^1.1.2",
+    "bqplot": "0.3.0",
+    "font-awesome": "^4.7.0",
+    "lodash.once": "^4.1.1"
+  },
+  "devDependencies": {
+    "lodash.debounce": "^4.0.8",
+    "rimraf": "^2.6.2"
+  },
+  "gitHead": "9f00f654748b85702463b60a98751943c0107486"
+}

@@ -1,0 +1,62 @@
+---
+prev_page: '/motivation.html'
+next_page: '/tutorial/tutorial_github_setup.html'
+---
+
+{% raw %}
+
+<div id="ipython-notebook">
+    <div class="buttons">
+        <button class="interact-button js-nbinteract-widget">
+            Show Widgets
+        </button>
+    </div>
+    
+
+
+
+
+
+
+
+  
+
+  <div class="nbinteract-hide_in
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># HIDDEN</span>
+<span class="c1"># Clear previously defined variables</span>
+<span class="o">%</span><span class="k">reset</span> -f
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Getting-Started">Getting Started<a class="anchor-link" href="#Getting-Started">&#182;</a></h1><p>In the following set of pages, we will show you how to use <code>nbinteract</code> and its
+related tools. At the end of this tutorial, you will have a publicly viewable
+interactive webpage to share with the world!</p>
+<h2 id="Following-Along">Following Along<a class="anchor-link" href="#Following-Along">&#182;</a></h2><p>In this tutorial, we assume familiarity with running terminal commands and using Jupyter notebooks.</p>
+<p>The simplest way to follow this tutorial is to use the <a href="http://mybinder.org/">Binder</a> service to start a notebook server. On the next page, we'll guide you through the steps to configure Binder so that the necessary packages are available for use in notebooks.</p>
+<h3 id="Installing-Locally">Installing Locally<a class="anchor-link" href="#Installing-Locally">&#182;</a></h3><p>If you prefer to work on your local machine, you need to install the <code>nbinteract</code> package. To install the package, run the following commands in your terminal:</p>
+<div class="highlight"><pre><span></span>pip install nbinteract
+
+<span class="c1"># The next two commands can be skipped for notebook version 5.3 and above</span>
+jupyter nbextension <span class="nb">enable</span> --py --sys-prefix bqplot
+jupyter nbextension <span class="nb">enable</span> --py --sys-prefix widgetsnbextension
+</pre></div>
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+{% endraw %}

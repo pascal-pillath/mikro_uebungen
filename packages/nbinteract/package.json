@@ -1,0 +1,33 @@
+{
+  "name": "nbinteract",
+  "version": "0.2.4",
+  "description": "Script to allow public interactive Jupyter notebooks",
+  "main": "built/index.bundle.js",
+  "scripts": {
+    "test": "echo \"Error: no tests available\" && exit 1",
+    "watch": "webpack --watch",
+    "serve-old": "webpack-dev-server --open",
+    "clean": "rimraf built/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamLau95/nbinteract.git"
+  },
+  "keywords": [
+    "jupyter",
+    "notebook",
+    "html",
+    "interactive",
+    "widgets"
+  ],
+  "author": "Sam Lau",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/SamLau95/nb-interact/issues"
+  },
+  "homepage": "https://github.com/SamLau95/nb-interact#readme",
+  "dependencies": {
+    "nbinteract-core": "^0.2.4"
+  },
+  "gitHead": "9f00f654748b85702463b60a98751943c0107486"
+}

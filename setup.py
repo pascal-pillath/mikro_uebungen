@@ -1,52 +1,83 @@
-from setuptools import setup, find_packages
-import os
-import os.path as op
-from glob import glob
-from jupyter_book import __version__
+"""
+A Jupyter nbconvert exporter to convert notebooks and their widgets to publicly
+runnable HTML files.
+"""
+# Always prefer setuptools over distutils
+from setuptools import setup
+from setuptools.command.test import test as TestCommand
 
-# Location of the template files we use for cloning
-template_files = glob(
-    op.join('jupyter_book', 'book_template', '**', '*'), recursive=True)
-template_files += glob(op.join('jupyter_book', 'minimal',
-                               '**', '*'), recursive=True)
-template_files += glob(op.join('jupyter_book', 'page', 'templates', '*.tpl'))
-template_files = [ii.replace('jupyter_book' + os.sep, '', 1)
-                  for ii in template_files]
-PACKAGE_DATA = {"jupyter_book": template_files}
+# To use a consistent encoding
+from codecs import open
+from os import path
+import sys
 
-# Source dependencies from requirements.txt file.
-with open('requirements.txt', 'r') as f:
-    lines = f.readlines()
-    install_packages = [line.strip() for line in lines]
+# Package version
+version = '0.2.4'
+
+here = path.abspath(path.dirname(__file__))
+
+# Get the long description from the README file
+with open(path.join(here, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
+
+# Get requirements from requirements.txt
+with open(path.join(here, 'requirements.txt'), encoding='utf-8') as f:
+    install_requires = f.readlines()
+
+
+class PyTest(TestCommand):
+    user_options = [('pytest-args=', 'a', "Arguments to pass to py.test")]
+
+    def initialize_options(self):
+        TestCommand.initialize_options(self)
+        self.pytest_args = ['tests']
+
+    def finalize_options(self):
+        TestCommand.finalize_options(self)
+
+    def run_tests(self):
+        # import here, cause outside the eggs aren't loaded
+        import pytest
+        errno = pytest.main(self.pytest_args)
+        sys.exit(errno)
+
 
 setup(
-    name='jupyter-book',
-    version=__version__,
-    install_requires=install_packages,
-    include_package_data=True,
-    python_requires='>=3.6',
-    author='Project Jupyter Contributors',
-    author_email='jupyter@googlegroups.com',
-    url='https://jupyterbook.org/',
-    project_urls={
-        'Documentation': 'https://jupyterbook.org',
-        'Funding': 'https://jupyter.org/about',
-        'Source': 'https://github.com/jupyter/jupyter-book/',
-        'Tracker': 'https://github.com/jupyter/jupyter-book/issues',
+    name='nbinteract',
+    version=version,
+    description='Export interactive HTML pages from Jupyter Notebooks',
+    long_description=long_description,
+    url='https://github.com/SamLau95/nbinteract',
+    author='Sam Lau',
+    author_email='samlau95@gmail.com',
+    license='MIT',
+
+    # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
+    classifiers=[
+        'Development Status :: 3 - Alpha',
+        'Intended Audience :: Developers',
+        'Topic :: Software Development :: Build Tools',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Framework :: Jupyter',
+    ],
+    keywords='jupyter nbconvert interact',
+    packages=['nbinteract'],
+    package_data={'nbinteract': ['templates/*.tpl']},
+    install_requires=install_requires,
+    extras_require={
+        'dev': ['check-manifest'],
+        'test': ['pytest', 'coverage', 'coveralls'],
     },
-    # this should be a whitespace separated string of keywords, not a list
-    keywords="reproducible science environments scholarship notebook",
-    description="Jupyter Book: Create an online book with Jupyter Notebooks"
-                " and Jekyll",
-    long_description=open('./README.md', 'r').read(),
-    long_description_content_type='text/markdown',
-    license='BSD',
-    packages=find_packages(),
-    use_package_data=True,
-    package_data=PACKAGE_DATA,
+    cmdclass={'test': PyTest},
+
+    # Add exporter to nbconvert CLI:
+    # https://nbconvert.readthedocs.io/en/latest/external_exporters.html
     entry_points={
-        'console_scripts': [
-            'jupyter-book = jupyter_book.main:main',
-        ]
-    },
+        'nbconvert.exporters': ['interact = nbinteract:InteractExporter'],
+        'console_scripts': ['nbinteract = nbinteract.cli:main'],
+    }
 )
